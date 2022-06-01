@@ -1,5 +1,4 @@
-import 'package:gcp_certification_exercise/presentation/view/organism/course.dart';
-import 'package:gcp_certification_exercise/presentation/view/organism/course_list.dart';
+import 'package:gcp_certification_exercise/domain/course_list.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final courseListController =
@@ -12,17 +11,7 @@ class CourseListController extends StateNotifier<AsyncValue<CourseList>> {
 
   Future<void> _fetch({
     bool reload = false,
-  }) async {
-    state = const AsyncData(
-      CourseList(
-        courses: [
-          Course(),
-          Course(),
-          Course(),
-        ],
-      ),
-    );
-  }
+  }) async {}
 
   Future<void> reload() async {
     await _fetch(reload: true);
