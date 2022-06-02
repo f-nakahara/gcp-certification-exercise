@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gcp_certification_exercise/presentation/view/atom/card_button.dart';
 
 /// コース
 class Course extends StatelessWidget {
@@ -8,13 +9,10 @@ class Course extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      clipBehavior: Clip.antiAlias,
-      child: ListTile(
-        title: Text('Course Name'),
-        leading: Icon(Icons.folder),
-        onTap: () {},
-      ),
+    return CardButton(
+      title: 'Course Name',
+      leading: const Icon(Icons.folder),
+      onTap: () {},
     );
   }
 }
