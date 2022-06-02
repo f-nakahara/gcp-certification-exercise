@@ -7,8 +7,9 @@ class NavigatorUtil {
     required BuildContext context,
     required Widget page,
     bool fullscreenDialog = false,
+    bool rootNavigator = false,
   }) async {
-    Navigator.of(context).push(
+    Navigator.of(context, rootNavigator: rootNavigator).push(
       _pageRoute(
         page: page,
         fullscreenDialog: fullscreenDialog,
