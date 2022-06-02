@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class NavigatorUtil {
-  Future push({
+  NavigatorUtil._();
+
+  static Future push({
     required BuildContext context,
     required Widget page,
     bool fullscreenDialog = false,
@@ -14,7 +16,7 @@ class NavigatorUtil {
     );
   }
 
-  PageRoute _pageRoute({
+  static PageRoute _pageRoute({
     required Widget page,
     bool fullscreenDialog = false,
   }) {
