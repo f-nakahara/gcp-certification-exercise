@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gcp_certification_exercise/presentation/view/atom/card_button.dart';
 
 /// 資格
 class Certification extends StatelessWidget {
@@ -6,6 +7,10 @@ class Certification extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return CardButton(
+      title: 'Certification Name',
+      leading: Icon(Icons.folder),
+      onTap: () {},
+    );
   }
 }

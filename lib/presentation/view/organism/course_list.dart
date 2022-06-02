@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:gcp_certification_exercise/presentation/controller/course_list_controller.dart';
 import 'package:gcp_certification_exercise/presentation/view/organism/course.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 /// コース一覧
-class CourseList extends StatelessWidget {
-  const CourseList({
-    Key? key,
-    required this.courses,
-    this.page = 1,
-    this.perPage = 20,
-    this.hasNextPage = false,
-    this.hasPreviousPage = false,
-  }) : super(key: key);
-
-  final List<Course> courses;
-  final int page;
-  final int perPage;
-  final bool hasNextPage;
-  final bool hasPreviousPage;
+class CourseList extends ConsumerWidget {
+  const CourseList({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
-    return ListView(
-      children: courses,
+  Widget build(BuildContext context, WidgetRef ref) {
+    final asyncValue = ref.watch(courseListController);
+    return asyncValue.when(
+      data: (data) {
+        final courses = data.courses;
+        return ListView(
+          children: [
+            Course(),
+            Course(),
+            Course(),
+          ],
+        );
+      },
+      error: (error, _) => Container(),
+      loading: () => Container(),
     );
   }
 }

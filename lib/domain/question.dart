@@ -4,12 +4,14 @@ import 'package:equatable/equatable.dart';
 class Question extends Equatable {
   final String id;
   final String body;
-  final String explanation;
+  final String choices;
+  final String answer;
 
   const Question({
     required this.id,
     required this.body,
-    required this.explanation,
+    required this.choices,
+    required this.answer,
   });
 
   @override
