@@ -1,5 +1,10 @@
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+final bottomNavigationController =
+    StateNotifierProvider<BottomNavigationController, BottomNavigationItem>(
+  (ref) => BottomNavigationController(),
+);
+
 enum BottomNavigationItem {
   courseList,
   wordList,
