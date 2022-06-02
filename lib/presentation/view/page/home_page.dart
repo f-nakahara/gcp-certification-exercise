@@ -27,9 +27,11 @@ class HomePage extends ConsumerWidget {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
+            label: 'ホーム',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.book),
+            label: '用語',
           ),
         ],
       ),
