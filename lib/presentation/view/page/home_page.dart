@@ -30,11 +30,43 @@ class HomePage extends ConsumerWidget {
       ),
       child: IndexedStack(
         index: currentTab.index,
-        children: const [
-          CourseListPage(),
-          SizedBox(), // TODO: 単語集画面
+        children: [
+          Navigator(
+            key: controller.navigatorKeys[BottomNavigationItem.courseList]!,
+            onGenerateRoute: (_) {
+              return MaterialPageRoute(builder: (context) {
+                return const CourseListPage();
+              });
+            },
+          ),
+          Navigator(
+            key: controller.navigatorKeys[BottomNavigationItem.wordList]!,
+            onGenerateRoute: (_) {
+              return MaterialPageRoute(builder: (context) {
+                return const SizedBox(); // TODO: 単語集画面
+              });
+            },
+          ),
         ],
       ),
     );
   }
 }
+
+// child: PersistentTabView(
+// context,
+// screens: const [
+// CourseListPage(),
+// SizedBox(), // TODO: 単語集画面
+// ],
+// items: [
+// PersistentBottomNavBarItem(
+// icon: const Icon(Icons.home),
+// title: 'ホーム',
+// ),
+// PersistentBottomNavBarItem(
+// icon: const Icon(Icons.book),
+// title: '用語',
+// ),
+// ],
+// ),

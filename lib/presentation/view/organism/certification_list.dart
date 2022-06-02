@@ -15,9 +15,9 @@ class CertificationList extends ConsumerWidget {
         final certifications = data.certifications;
         return ListView(
           children: [
-            Certification(),
-            Certification(),
-            Certification(),
+            Certification(id: '1'),
+            Certification(id: '1'),
+            Certification(id: '1'),
           ],
         );
       },

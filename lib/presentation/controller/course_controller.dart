@@ -1,26 +1,31 @@
-import 'package:flutter/material.dart';
+import 'package:gcp_certification_exercise/presentation/util/navigator_util.dart';
 import 'package:gcp_certification_exercise/presentation/view/organism/course.dart';
 import 'package:gcp_certification_exercise/presentation/view/page/certification_list_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
+import 'bottom_navigation_controller.dart';
+
 final courseControllers =
-    StateNotifierProvider.family<CourseController, String, AsyncValue<Course>>(
-  (ref, id) => CourseController(),
+    StateNotifierProvider.family<CourseController, AsyncValue<Course>, String>(
+  (ref, id) => CourseController(reader: ref.read),
 );
 
 class CourseController extends StateNotifier<AsyncValue<Course>> {
-  CourseController() : super(const AsyncLoading());
+  CourseController({
+    required this.reader,
+  }) : super(const AsyncLoading());
+
+  final Reader reader;
 
   /// 資格一覧の表示
-  Future<void> showCertificationList({
-    required BuildContext context,
-  }) async {
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) {
-          return const CertificationListPage();
-        },
-      ),
+  Future<void> showCertificationListPage() async {
+    NavigatorUtil.push(
+      context: reader(bottomNavigationController.notifier).currentState.context,
+      page: const CertificationListPage(),
     );
+    // NavigatorUtil.push(
+    //   context: context,
+    //   page: const CertificationListPage(),
+    // );
   }
 }

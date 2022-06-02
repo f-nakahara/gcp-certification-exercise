@@ -8,8 +8,9 @@ class AnswerExplanationPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MyScaffold(
-      child: AnswerExplanation(),
+    return MyScaffold(
+      appBar: AppBar(),
+      child: const AnswerExplanation(),
     );
   }
 }

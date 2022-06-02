@@ -15,9 +15,9 @@ class CourseList extends ConsumerWidget {
         final courses = data.courses;
         return ListView(
           children: [
-            Course(),
-            Course(),
-            Course(),
+            Course(id: '1'),
+            Course(id: '2'),
+            Course(id: '3'),
           ],
         );
       },
