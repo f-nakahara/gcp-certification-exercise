@@ -20,7 +20,7 @@ class Course extends ConsumerWidget {
     return CardButton(
       title: 'Course Name',
       leading: const Icon(Icons.folder),
-      onTap: () => controller.showCertificationList(context: context),
+      onTap: controller.showCertificationListPage,
     );
   }
 }
