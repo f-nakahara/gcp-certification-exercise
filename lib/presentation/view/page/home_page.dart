@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gcp_certification_exercise/presentation/controller/bottom_navigation_controller.dart';
+import 'package:gcp_certification_exercise/presentation/view/page/course_list_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 /// ホーム画面
@@ -14,8 +15,8 @@ class HomePage extends ConsumerWidget {
       body: SafeArea(
         child: IndexedStack(
           children: [
-            Container(),
-            Container(),
+            CourseListPage(),
+            Container(), // TODO: 単語集画面
           ],
           index: currentTab.index,
         ),
