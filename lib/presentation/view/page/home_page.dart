@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gcp_certification_exercise/presentation/controller/bottom_navigation_controller.dart';
+import 'package:gcp_certification_exercise/presentation/view/atom/my_scaffold.dart';
 import 'package:gcp_certification_exercise/presentation/view/page/course_list_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
@@ -11,16 +12,7 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = ref.read(bottomNavigationController.notifier);
     final currentTab = ref.watch(bottomNavigationController);
-    return Scaffold(
-      body: SafeArea(
-        child: IndexedStack(
-          index: currentTab.index,
-          children: const [
-            CourseListPage(),
-            SizedBox(), // TODO: 単語集画面
-          ],
-        ),
-      ),
+    return MyScaffold(
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentTab.index,
         onTap: (index) =>
@@ -34,6 +26,13 @@ class HomePage extends ConsumerWidget {
             icon: Icon(Icons.book),
             label: '用語',
           ),
+        ],
+      ),
+      child: IndexedStack(
+        index: currentTab.index,
+        children: const [
+          CourseListPage(),
+          SizedBox(), // TODO: 単語集画面
         ],
       ),
     );
