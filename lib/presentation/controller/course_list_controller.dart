@@ -7,11 +7,19 @@ final courseListController =
 );
 
 class CourseListController extends StateNotifier<AsyncValue<CourseList>> {
-  CourseListController() : super(const AsyncLoading());
+  CourseListController() : super(const AsyncLoading()) {
+    _fetch();
+  }
 
   Future<void> _fetch({
     bool reload = false,
-  }) async {}
+  }) async {
+    state = AsyncData(
+      CourseList(
+        courses: [],
+      ),
+    );
+  }
 
   Future<void> reload() async {
     await _fetch(reload: true);
