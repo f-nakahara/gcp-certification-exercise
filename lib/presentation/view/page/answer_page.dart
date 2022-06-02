@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-/// 解説画面
-class ExplanationPage extends StatelessWidget {
-  const ExplanationPage({Key? key}) : super(key: key);
+/// 解答画面
+class AnswerPage extends StatelessWidget {
+  const AnswerPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
