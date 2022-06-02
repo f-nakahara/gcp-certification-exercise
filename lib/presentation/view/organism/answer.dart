@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-/// 解説
-class Explanation extends StatelessWidget {
-  const Explanation({Key? key}) : super(key: key);
+/// 解答
+class Answer extends StatelessWidget {
+  const Answer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
