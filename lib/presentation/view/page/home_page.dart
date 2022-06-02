@@ -14,18 +14,18 @@ class HomePage extends ConsumerWidget {
     return Scaffold(
       body: SafeArea(
         child: IndexedStack(
-          children: [
-            CourseListPage(),
-            Container(), // TODO: 単語集画面
-          ],
           index: currentTab.index,
+          children: const [
+            CourseListPage(),
+            SizedBox(), // TODO: 単語集画面
+          ],
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: currentTab.index,
         onTap: (index) =>
             controller.selectTab(BottomNavigationItem.values[index]),
-        items: [
+        items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'ホーム',
