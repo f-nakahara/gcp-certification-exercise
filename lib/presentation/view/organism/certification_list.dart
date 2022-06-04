@@ -5,20 +5,23 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 /// 資格一覧
 class CertificationList extends ConsumerWidget {
-  const CertificationList({Key? key}) : super(key: key);
+  const CertificationList({
+    Key? key,
+    required this.courseName,
+  }) : super(key: key);
+
+  final String courseName;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final asyncValue = ref.watch(certificationListController);
     return asyncValue.when(
       data: (data) {
-        final certifications = data.certifications;
+        final certifications = data.certifications
+            .where((element) => element.courseName == courseName)
+            .toList();
         return ListView(
-          children: [
-            Certification(id: '1'),
-            Certification(id: '1'),
-            Certification(id: '1'),
-          ],
+          children: certifications.map((e) => Certification(id: e.id)).toList(),
         );
       },
       error: (error, _) => Container(),

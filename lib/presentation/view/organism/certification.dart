@@ -14,11 +14,18 @@ class Certification extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final controller = ref.read(certificationControllers(id).notifier);
-    return CardButton(
-      title: 'Certification Name',
-      leading: const Icon(Icons.folder),
-      onTap: () => controller.showQuestionPage(context: context),
+    final controller = ref.read(certificationController(id).notifier);
+    final asyncValue = ref.watch(certificationController(id));
+    return asyncValue.when(
+      data: (data) {
+        return CardButton(
+          title: data.name,
+          leading: const Icon(Icons.folder),
+          onTap: () => controller.showQuestionPage(context: context),
+        );
+      },
+      error: (error, _) => Container(),
+      loading: () => Container(),
     );
   }
 }

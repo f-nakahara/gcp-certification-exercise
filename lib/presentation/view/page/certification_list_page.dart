@@ -4,12 +4,19 @@ import 'package:gcp_certification_exercise/presentation/view/organism/certificat
 
 /// 資格一覧画面
 class CertificationListPage extends StatelessWidget {
-  const CertificationListPage({Key? key}) : super(key: key);
+  const CertificationListPage({
+    Key? key,
+    required this.courseName,
+  }) : super(key: key);
+
+  final String courseName;
 
   @override
   Widget build(BuildContext context) {
-    return const MyScaffold(
-      child: CertificationList(),
+    return MyScaffold(
+      child: CertificationList(
+        courseName: courseName,
+      ),
     );
   }
 }
