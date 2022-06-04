@@ -9,6 +9,12 @@ class CourseList extends Equatable {
     required this.courses,
   });
 
+  factory CourseList.fromMap(Map<String, dynamic> map) {
+    return CourseList(
+      courses: (map['data'] as List).map((e) => Course.fromMap(e)).toList(),
+    );
+  }
+
   @override
   List<Object?> get props => [courses];
 }
