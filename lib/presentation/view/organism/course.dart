@@ -12,15 +12,20 @@ class Course extends ConsumerWidget {
 
   final String id;
 
-  void onTap() {}
-
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final controller = ref.read(courseControllers(id).notifier);
-    return CardButton(
-      title: 'Course Name',
-      leading: const Icon(Icons.folder),
-      onTap: controller.showCertificationListPage,
+    final asyncValue = ref.watch(courseControllers(id));
+    return asyncValue.when(
+      data: (data) {
+        return CardButton(
+          title: data.name,
+          leading: const Icon(Icons.folder),
+          onTap: () => controller.showCertificationListPage(context: context),
+        );
+      },
+      error: (error, _) => Container(),
+      loading: () => Container(),
     );
   }
 }

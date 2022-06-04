@@ -10,6 +10,13 @@ class Course extends Equatable {
     required this.name,
   });
 
+  factory Course.fromMap(Map<String, dynamic> map) {
+    return Course(
+      id: map['id'].toString(),
+      name: map['name'],
+    );
+  }
+
   @override
   List<Object?> get props => [id];
 }
