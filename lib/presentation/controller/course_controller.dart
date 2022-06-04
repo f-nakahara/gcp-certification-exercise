@@ -35,7 +35,7 @@ class CourseController extends StateNotifier<AsyncValue<Course>> {
   }) async {
     NavigatorUtil.push(
       context: context,
-      page: const CertificationListPage(),
+      page: CertificationListPage(courseName: state.value!.name),
     );
   }
 }
