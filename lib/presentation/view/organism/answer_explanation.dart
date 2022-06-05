@@ -1,27 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:gcp_certification_exercise/presentation/controller/question_controller.dart';
 import 'package:gcp_certification_exercise/presentation/view/organism/question.dart';
+import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 /// 解答解説
-class AnswerExplanation extends StatelessWidget {
-  const AnswerExplanation({Key? key}) : super(key: key);
+class AnswerExplanation extends ConsumerWidget {
+  const AnswerExplanation({
+    Key? key,
+    required this.questionId,
+  }) : super(key: key);
+
+  final String questionId;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final question = ref
+        .watch(questionControllers(questionId).select((value) => value.value!));
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      mainAxisSize: MainAxisSize.min,
+      children: [
         /// 問題文
         Flexible(
-          child: Question(),
+          child: Question(id: questionId),
         ),
-        SizedBox(height: 20),
+        const SizedBox(height: 20),
 
         /// 解答解説
-        Text(
-          'A. が正解です。自動化は、変更の一貫性を保ちリスクを低く抑えるための変革的なアプローチです。\n'
-          'B. は不正解です。これは戦術的なアプローチであり、多くの場合は変更のリスクが高まり、デプロイの頻度が低下します。\n'
-          'C. は不正解です。そもそも問題の発生を抑制できていないため、このアプローチは変革的ではありません。\n',
-        ),
+        Text(question.answer),
       ],
     );
   }
