@@ -9,6 +9,12 @@ class QuestionList extends Equatable {
     required this.questions,
   });
 
+  factory QuestionList.fromMap(Map<String, dynamic> map) {
+    return QuestionList(
+      questions: (map['data'] as List).map((e) => Question.fromMap(e)).toList(),
+    );
+  }
+
   @override
   List<Object?> get props => [questions];
 }

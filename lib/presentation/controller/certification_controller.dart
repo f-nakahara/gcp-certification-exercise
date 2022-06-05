@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:gcp_certification_exercise/domain/certification.dart';
 import 'package:gcp_certification_exercise/presentation/controller/certification_list_controller.dart';
 import 'package:gcp_certification_exercise/presentation/util/navigator_util.dart';
-import 'package:gcp_certification_exercise/presentation/view/page/question_page.dart';
+import 'package:gcp_certification_exercise/presentation/view/page/question_list_page.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 final certificationController = StateNotifierProvider.family<
@@ -37,7 +37,7 @@ class CertificationController extends StateNotifier<AsyncValue<Certification>> {
   }) async {
     NavigatorUtil.push(
       context: context,
-      page: const QuestionPage(),
+      page: QuestionListPage(certificationName: state.value!.name),
     );
   }
 }
